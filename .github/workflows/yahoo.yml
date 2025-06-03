@@ -1,0 +1,8 @@
+    - name: Run scraper
+      run: python get_yahoo_tnx_history.py
+
+    - name: Upload CSV artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: 10yr-yield-history
+        path: 10yr_yield_history.csv
