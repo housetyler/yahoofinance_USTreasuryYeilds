@@ -1,8 +1,31 @@
-    - name: Run scraper
-      run: python get_yahoo_tnx_history.py
+name: Daily Yahoo 10Y Treasury Pull
 
-    - name: Upload CSV artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: 10yr-yield-history
-        path: 10yr_yield_history.csv
+on:
+  schedule:
+    - cron: '0 13 * * *'  # 7:00 AM MT (13:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  fetch-yield:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install pandas requests
+
+      - name: Run scraper
+        run: python get_yahoo_tnx_history.py
+
+      - name: Upload CSV artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: 10yr-yield-history
+          path: 10yr_yield_history.csv
