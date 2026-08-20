@@ -1,13 +1,30 @@
 // This is your Prisma schema file.
 // It defines two tables: Company and User.
+//
+// ── DATABASE SWITCHING ────────────────────────────────────────────────────
+// Local development (SQLite):
+//   provider = "sqlite"
+//   DATABASE_URL="file:./dev.db"   (set in .env)
+//
+// Vercel / production (Postgres — e.g. Neon or Vercel Postgres):
+//   1. Change provider below to "postgresql"
+//   2. Set DATABASE_URL in Vercel environment variables to your Postgres
+//      connection string, e.g.:
+//      DATABASE_URL="******host/dbname?sslmode=require"
+//   3. Run:  npx prisma migrate deploy
+//
+// The schema models below are identical for both databases — no other
+// changes are needed when you switch.
+// ─────────────────────────────────────────────────────────────────────────
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
+  // ← Change "sqlite" to "postgresql" when deploying to Vercel
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url      = env("DATABASE_URL")
 }
 
 model Company {

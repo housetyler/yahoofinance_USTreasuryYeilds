@@ -1,0 +1,349 @@
+/*
+ * styles/globals.css
+ *
+ * RM Select Benchmarking brand palette + base styles.
+ *
+ * Color tokens:
+ *   --navy-dark   #002b49   (deepest navy — headers, footer)
+ *   --navy        #004573   (primary navy — nav bar)
+ *   --blue        #0075a8   (interactive blue — buttons, links)
+ *   --blue-light  #6fb0c8   (light blue — hover states, highlights)
+ *   --green-dark  #5e7e44   (accent green — success, badges)
+ *   --green       #6aa339   (bright green — accents)
+ *   --white       #ffffff
+ *   --gray-bg     #f4f6f9   (page background)
+ *   --gray-border #d0d7de
+ */
+
+:root {
+  --navy-dark:   #002b49;
+  --navy:        #004573;
+  --blue:        #0075a8;
+  --blue-light:  #6fb0c8;
+  --green-dark:  #5e7e44;
+  --green:       #6aa339;
+  --white:       #ffffff;
+  --gray-bg:     #f4f6f9;
+  --gray-border: #d0d7de;
+  --text:        #1a2733;
+  --text-muted:  #5a6a78;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--gray-bg);
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ── Top navigation bar ────────────────────────────────────────────────── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--navy);
+  padding: 0 2rem;
+  height: 60px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.navbar__logo img {
+  height: 36px;
+  width: auto;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar__user {
+  color: var(--blue-light);
+  font-size: 0.875rem;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.btn--primary {
+  background: var(--blue);
+  color: var(--white);
+}
+.btn--primary:hover {
+  background: var(--navy);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--blue-light);
+}
+.btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn--danger {
+  background: #c0392b;
+  color: var(--white);
+}
+.btn--danger:hover {
+  opacity: 0.85;
+}
+
+.btn--sm {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ── Card / container ──────────────────────────────────────────────────── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-border);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
+
+/* ── Login page ────────────────────────────────────────────────────────── */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy-dark);
+  padding: 1rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.login-card__header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.login-card__logo {
+  height: 48px;
+  margin-bottom: 0.75rem;
+}
+
+.login-card__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+
+.login-card__subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ── Forms ─────────────────────────────────────────────────────────────── */
+.form-group {
+  margin-bottom: 1.1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.35rem;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--gray-border);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--white);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0, 117, 168, 0.15);
+}
+
+.form-error {
+  color: #c0392b;
+  font-size: 0.82rem;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+/* ── Dashboard layout ──────────────────────────────────────────────────── */
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 1.5rem 2rem;
+}
+
+.dashboard-iframe-wrapper {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  background: var(--white);
+}
+
+.dashboard-iframe-wrapper iframe {
+  width: 100%;
+  height: calc(100vh - 120px);
+  border: none;
+  display: block;
+}
+
+/* ── Admin page ────────────────────────────────────────────────────────── */
+.admin-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .admin-grid { grid-template-columns: 1fr; }
+  .dashboard-content { padding: 1rem; }
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.admin-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--gray-border);
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table tr:hover td {
+  background: #edf4fa;
+}
+
+/* ── Section heading ───────────────────────────────────────────────────── */
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--blue-light);
+}
+
+/* ── Badge ─────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge--admin {
+  background: var(--green);
+  color: var(--white);
+}
+
+.badge--client {
+  background: var(--blue-light);
+  color: var(--navy-dark);
+}
+
+/* ── Footer ────────────────────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--gray-border);
+  background: var(--white);
+}
