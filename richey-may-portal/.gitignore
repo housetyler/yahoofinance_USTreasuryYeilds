@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# environment variables — NEVER commit this file
+.env
+.env.local
+.env.*.local
+
+# Next.js build output
+.next/
+out/
+
+# Prisma local database
+*.db
+*.db-journal
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel

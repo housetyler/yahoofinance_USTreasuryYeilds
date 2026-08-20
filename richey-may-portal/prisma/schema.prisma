@@ -1,0 +1,26 @@
+// This is your Prisma schema file.
+// It defines two tables: Company and User.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Company {
+  id    Int    @id @default(autoincrement())
+  name  String @unique   // must match the Client_Name value in Domo exactly
+  users User[]
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  password  String  // bcrypt hash — never plain text
+  isAdmin   Boolean @default(false)
+  companyId Int?
+  company   Company? @relation(fields: [companyId], references: [id])
+}
